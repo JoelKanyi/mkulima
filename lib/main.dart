@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
           secondary: const Color(0xFF07480E),
         ),
       ),
-      home: HomeScreen(),
+      home: SignUpScreen(),
+      initialRoute: 'loginPage',
     );
   }
 }

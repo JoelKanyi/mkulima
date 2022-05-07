@@ -10,6 +10,35 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
 
+  int _selectedIndex = 0;
+
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Feeds',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Bookmarks',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Settings',
+      style: optionStyle,
+    )
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,306 +57,315 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
-        body: Container(
-          padding: const EdgeInsets.all(8),
-          alignment: Alignment.topCenter,
-          height: 210,
-          decoration: const BoxDecoration(
-              shape: BoxShape.rectangle, color: Color(0xFF07480E)),
-          child: Column(
-            children: [
-              Container(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                  child: Row(
+        body: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              alignment: Alignment.topCenter,
+              height: 220,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.rectangle, color: Color(0xFF07480E)),
+              child: Column(
+                children: [
+                  Container(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 9,
+                            child: SizedBox(
+                              height: 50,
+                              width: (MediaQuery.of(context).size.width) * 0.8,
+                              child: TextField(
+                                controller: searchController,
+                                // ignore: prefer_const_constructors
+                                decoration: InputDecoration(
+                                    prefixIcon: const Icon(Icons.search),
+                                    hintText: "Search...",
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                    border: const OutlineInputBorder()),
+                              ),
+                            ),
+                          ),
+                          const Expanded(
+                              child: SizedBox(
+                            width: 0,
+                          )),
+                          Expanded(
+                              flex: 1,
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                height: 50,
+                                width:
+                                    (MediaQuery.of(context).size.width) * 0.2,
+                                // ignore: prefer_const_constructors
+                                child: Icon(
+                                  Icons.filter_list_rounded,
+                                  color: Colors.white,
+                                  size: 32,
+                                ),
+                              ))
+                        ],
+                      )),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      Expanded(
-                        flex: 9,
-                        child: SizedBox(
-                          height: 50,
-                          width: (MediaQuery.of(context).size.width) * 0.8,
-                          child: TextField(
-                            controller: searchController,
-                            // ignore: prefer_const_constructors
-                            decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.search),
-                                hintText: "Search...",
-                                fillColor: Colors.white,
-                                filled: true,
-                                border: const OutlineInputBorder()),
+                      const Text(
+                        'Categories',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                      const Icon(
+                        Icons.chevron_right,
+                        size: 32,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 100,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
                           ),
                         ),
-                      ),
-                      const Expanded(
-                          child: SizedBox(
-                        width: 0,
-                      )),
-                      Expanded(
-                          flex: 1,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            height: 50,
-                            width: (MediaQuery.of(context).size.width) * 0.2,
-                            // ignore: prefer_const_constructors
-                            child: Icon(
-                              Icons.filter_list_rounded,
-                              color: Colors.white,
-                              size: 32,
-                            ),
-                          ))
-                    ],
-                  )),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const Text(
-                    'Categories',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              const CircleAvatar(
+                                radius: 30, // Image radius
+                                backgroundImage: AssetImage('assets/maize.jpg'),
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              const Text(
+                                "Cereals",
+                                style: TextStyle(
+                                    color: Color.fromARGB(206, 243, 239, 239)),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  const Icon(
-                    Icons.chevron_right,
-                    size: 32,
-                    color: Colors.white,
-                  )
+                  const SizedBox(
+                    height: 8,
+                  ),
                 ],
               ),
-              SizedBox(
-                height: 100,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        // ignore: prefer_const_literals_to_create_immutables
-                        children: [
-                          const CircleAvatar(
-                            radius: 30, // Image radius
-                            backgroundImage: AssetImage('assets/maize.jpg'),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          const Text(
-                            "Cereals",
-                            style: TextStyle(
-                                color: Color.fromARGB(206, 243, 239, 239)),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+            ),
+            Center(child: _widgetOptions.elementAt(_selectedIndex))
+          ],
         ),
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.add_circle), onPressed: () {}),
@@ -338,29 +376,32 @@ class _HomeScreenState extends State<HomeScreen> {
             canvasColor: Colors.white,
           ),
           child: BottomNavigationBar(
-              type: BottomNavigationBarType.shifting,
-              selectedItemColor: Colors.green,
-              unselectedItemColor: Colors.grey,
-              backgroundColor: Colors.green,
-              // ignore: prefer_const_literals_to_create_immutables
-              items: [
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: "Home",
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.feed),
-                  label: "Feeds",
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.bookmark),
-                  label: "Bookmarks",
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
-                  label: "Settings",
-                )
-              ]),
+            type: BottomNavigationBarType.shifting,
+            selectedItemColor: Colors.green,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.green,
+            // ignore: prefer_const_literals_to_create_immutables
+            items: [
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: "Home",
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.feed),
+                label: "Feeds",
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.bookmark),
+                label: "Bookmarks",
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: "Settings",
+              )
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+          ),
         ));
   }
 }

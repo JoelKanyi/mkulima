@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mkulima/src/screens/home_screen.dart';
+import 'package:mkulima/src/screens/register_screen.dart';
+import 'package:mkulima/utils/transitions/slide_route.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -13,7 +16,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scaffold(
+        body: Padding(
       padding: EdgeInsets.all(8),
       child: ListView(
         children: <Widget>[
@@ -60,13 +64,20 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: 65,
                   padding: EdgeInsets.all(8),
                   child: ElevatedButton(
-                      onPressed: () {}, child: const Text('Sign In')),
+                      onPressed: () {
+                        Navigator.push(
+                            context, SlideRightRoute(page: HomeScreen()));
+                      },
+                      child: const Text('Sign In')),
                 ),
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(8),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context, SlideLeftRoute(page: SignUpScreen()));
+                    },
                     child: const Text("Don't have an account? Sign up",
                         style: TextStyle(fontSize: 16)),
                   ),
@@ -76,6 +87,6 @@ class _SignInScreenState extends State<SignInScreen> {
           )
         ],
       ),
-    );
+    ));
   }
 }
