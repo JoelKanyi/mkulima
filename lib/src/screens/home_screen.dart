@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
+import 'package:mkulima/src/controllers/items_controller.dart';
+import 'package:mkulima/src/widgets/crop_item_time.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   TextEditingController searchController = TextEditingController();
+
+  final ItemsController itemsController = Get.put(ItemsController());
 
   int _selectedIndex = 0;
 
@@ -34,9 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    _selectedIndex = index;
   }
 
   @override
@@ -48,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // ignore: prefer_const_literals_to_create_immutables
           actions: [
             const Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(5),
               child: CircleAvatar(
                 radius: 20, // Image radius
                 backgroundImage: NetworkImage(
@@ -60,15 +57,15 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(5),
               alignment: Alignment.topCenter,
-              height: 220,
+              height: 180,
               decoration: const BoxDecoration(
                   shape: BoxShape.rectangle, color: Color(0xFF07480E)),
               child: Column(
                 children: [
                   Container(
-                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -76,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Expanded(
                             flex: 9,
                             child: SizedBox(
-                              height: 50,
+                              height: 45,
                               width: (MediaQuery.of(context).size.width) * 0.8,
                               child: TextField(
                                 controller: searchController,
@@ -98,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               flex: 1,
                               child: Container(
                                 alignment: Alignment.centerLeft,
-                                height: 50,
+                                height: 45,
                                 width:
                                     (MediaQuery.of(context).size.width) * 0.2,
                                 // ignore: prefer_const_constructors
@@ -110,9 +107,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               ))
                         ],
                       )),
-                  const SizedBox(
-                    height: 10,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 85,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       // ignore: prefer_const_literals_to_create_immutables
@@ -143,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -165,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -187,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -209,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -231,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -253,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -275,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -297,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -319,7 +313,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -341,7 +335,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             // ignore: prefer_const_literals_to_create_immutables
                             children: [
                               const CircleAvatar(
-                                radius: 30, // Image radius
+                                radius: 20, // Image radius
                                 backgroundImage: AssetImage('assets/maize.jpg'),
                               ),
                               const SizedBox(
@@ -358,13 +352,30 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
                 ],
               ),
             ),
-            Center(child: _widgetOptions.elementAt(_selectedIndex))
+            Expanded(
+              child: Obx(
+                () {
+                  if (itemsController.isLoading.value) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else
+                    // ignore: curly_braces_in_flow_control_structures
+                    return StaggeredGridView.countBuilder(
+                      crossAxisCount: 2,
+                      itemCount: itemsController.itemsList.length,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      itemBuilder: (context, index) {
+                        return CropItemTile(itemsController.itemsList[index]);
+                      },
+                      staggeredTileBuilder: (index) =>
+                          const StaggeredTile.fit(1),
+                    );
+                },
+              ),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
