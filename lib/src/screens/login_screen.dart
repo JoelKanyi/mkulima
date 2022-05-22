@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mkulima/src/screens/home_screen.dart';
 import 'package:mkulima/src/screens/register_screen.dart';
-import 'package:mkulima/utils/transitions/slide_route.dart';
+import 'package:mkulima/src/utils/transitions/slide_route.dart';
 
 class SignInScreen extends StatefulWidget {
   SignInScreen({Key? key}) : super(key: key);

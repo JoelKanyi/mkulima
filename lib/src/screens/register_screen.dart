@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mkulima/src/screens/login_screen.dart';
-import 'package:mkulima/utils/transitions/slide_route.dart';
+
+import '../utils/transitions/slide_route.dart';
 
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key? key}) : super(key: key);
