@@ -1,6 +1,6 @@
 # mkulima
 
-A new Flutter project to combine what I have learned about Flutter
+A new Flutter project to combine what I have learned so far about Flutter
 
 🚧 Work in Progress 👷‍♂️ 🏗
 
