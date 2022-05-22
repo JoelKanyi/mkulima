@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:mkulima/src/controllers/items_controller.dart';
-import 'package:mkulima/src/widgets/crop_item_time.dart';
+import 'package:mkulima/src/widgets/crop_item.dart';
 
 class HomeScreen extends StatelessWidget {
   TextEditingController searchController = TextEditingController();

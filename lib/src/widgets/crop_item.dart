@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mkulima/src/model/cat.dart';
+import 'package:flutter/material.dart';
 import 'package:mkulima/src/model/item.dart';
+
+import '../model/cat.dart';
 
 class CropItemTile extends StatelessWidget {
   //final Item item;
@@ -26,8 +28,10 @@ class CropItemTile extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: CachedNetworkImage(
-                      imageUrl: cat.image!.url!, fit: BoxFit.cover),
+                  child: Image(
+                    image: const AssetImage("assets/maizee.jpg"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(5),
@@ -54,17 +58,7 @@ class CropItemTile extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.fromLTRB(8, 5, 8, 0),
                 child: Text(
-                  "${cat.name!} Maize corns",
-                  maxLines: 2,
-                  style: const TextStyle(
-                      overflow: TextOverflow.ellipsis,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
-                )),
-            Padding(
-                padding: EdgeInsets.fromLTRB(8, 5, 8, 0),
-                child: Text(
-                  "${cat.countryCode!} Maize corns",
+                  'Fresh Maize',
                   maxLines: 2,
                   style: const TextStyle(
                       overflow: TextOverflow.ellipsis,
@@ -77,7 +71,7 @@ class CropItemTile extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(8, 5, 8, 0),
               child: Text(
-                "Ksh ${cat.energyLevel}",
+                "Ksh 1,500",
                 textAlign: TextAlign.left,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
               ),

@@ -36,7 +36,7 @@ class Cat {
   String? wikipediaUrl;
   int? hypoallergenic;
   String? referenceImageId;
-  Image? image;
+  mImage? image;
 
   Cat(
       {this.weight,
@@ -117,7 +117,7 @@ class Cat {
     wikipediaUrl = json['wikipedia_url'];
     hypoallergenic = json['hypoallergenic'];
     referenceImageId = json['reference_image_id'];
-    image = json['image'] != null ? new Image.fromJson(json['image']) : null;
+    image = json['image'] != null ? new mImage.fromJson(json['image']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -187,15 +187,15 @@ class Weight {
   }
 }
 
-class Image {
+class mImage {
   String? id;
   int? width;
   int? height;
   String? url;
 
-  Image({this.id, this.width, this.height, this.url});
+  mImage({this.id, this.width, this.height, this.url});
 
-  Image.fromJson(Map<String, dynamic> json) {
+  mImage.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     width = json['width'];
     height = json['height'];

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mkulima/src/screens/home_screen.dart';
 import 'package:mkulima/src/screens/login_screen.dart';
 import 'package:mkulima/src/screens/register_screen.dart';
+import 'package:mkulima/src/utils/colors_file.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const color = const Color(0xff07480E);
+    const color = mainColor;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mkulima app',
